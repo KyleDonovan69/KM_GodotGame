@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cugbu4w0rbbx5"]
+
+[ext_resource type="Texture2D" uid="uid://dyruqgyyerpaj" path="res://image-removebg-preview (1).png" id="1_mi635"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ajho"]
+size = Vector2(365.1369, 174.56598)
+
+[node name="Platform" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.199288, 6.9699416)
+scale = Vector2(0.21800433, 0.17219916)
+shape = SubResource("RectangleShape2D_5ajho")
+one_way_collision = true
+one_way_collision_margin = 6.0
+debug_color = Color(0.36078432, 0.6039216, 0.3647059, 0.3764706)
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(8.259983, -5.6323204)
+scale = Vector2(1, 0.99999994)
+texture = ExtResource("1_mi635")
