@@ -20,11 +20,11 @@ script = ExtResource("1_ig7tw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(1, 4)
 shape = SubResource("RectangleShape2D_1bvp3")
-debug_color = Color(0.30146945, 0.5855786, 0.63280535, 0.41960785)
+debug_color = Color(0.301469, 0.585579, 0.632805, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/CollisionShape2D"]
 position = Vector2(-2, -6)
-scale = Vector2(0.5, 0.53960395)
+scale = Vector2(0.5, 0.539604)
 texture = ExtResource("2_h2yge")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -40,3 +40,10 @@ offset_top = 12.0
 offset_right = 77.0
 offset_bottom = 35.0
 text = "Score: 0"
+
+[node name="PlayerIDLabel" type="Label" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 150.0
+offset_bottom = 63.0
+text = "ID: ---"

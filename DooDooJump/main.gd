@@ -18,6 +18,7 @@ extends Node2D
 @onready var cam := $Camera2D
 @onready var platforms := $Platforms
 @onready var score_label := $CanvasLayer/ScoreLabel
+@onready var player_id_label := $CanvasLayer/PlayerIDLabel
 
 var start_y := 0.0
 var highest_y := 0.0
@@ -26,6 +27,8 @@ var score := 0
 func _ready():
 	start_y = player.global_position.y
 	reset_game()
+	# Update player ID label after player initializes
+	call_deferred("update_player_id_label")
 
 func _process(_delta):
 	# camera follows upward only
@@ -38,6 +41,7 @@ func _process(_delta):
 
 	# game over ONLY if truly below camera
 	if player.global_position.y - cam.global_position.y > delete_below_camera:
+		player.save_to_csv()  # Save data before resetting
 		reset_game()
 
 # -------------------------
@@ -54,11 +58,15 @@ func update_score():
 		update_difficulty()
 
 func update_difficulty():
-	var steps := score / difficulty_step
+	var steps := float(score) / difficulty_step
 	var multiplier := 1.0 + steps * difficulty_increase
 	multiplier = min(multiplier, max_difficulty)
 
 	player.set_difficulty(multiplier)
+
+# Update player ID display
+func update_player_id_label():
+	player_id_label.text = "ID: %s (%.1fx)" % [player.player_id, player.starting_multiplier]
 
 # -------------------------
 # PLATFORM LOGIC
@@ -103,6 +111,10 @@ func reset_game():
 	)
 	player.velocity = Vector2.ZERO
 	player.set_difficulty(1.0)
+
+	# Reinitialize player tracking (generates new ID and resets timer)
+	player._ready()
+	call_deferred("update_player_id_label")
 
 	# reset camera
 	cam.global_position.y = start_y

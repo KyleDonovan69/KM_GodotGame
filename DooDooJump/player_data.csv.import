@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d0mscyww7274y"
+
+[deps]
+
+files=["res://player_data.SpeedMultiplier.translation", "res://player_data.TimeAlive.translation", "res://player_data.Timestamp.translation"]
+
+source_file="res://player_data.csv"
+dest_files=["res://player_data.SpeedMultiplier.translation", "res://player_data.TimeAlive.translation", "res://player_data.Timestamp.translation"]
+
+[params]
+
+compress=true
+delimiter=0
